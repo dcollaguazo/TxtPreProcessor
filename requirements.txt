@@ -1,6 +1,4 @@
-csv
-pandas as
+pandas
 langdetect
 numpy
 nltk
-re
