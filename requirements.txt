@@ -1,0 +1,6 @@
+csv
+pandas as
+langdetect
+numpy
+nltk
+re
