@@ -1,4 +1,10 @@
-pandas
-langdetect
-numpy
-nltk
+certifi==2018.4.16
+langdetect==1.0.7
+msgpack-python==0.5.6
+nltk==3.3
+numpy==1.14.5
+pandas==0.23.2
+python-dateutil==2.7.3
+pytz==2018.5
+six==1.11.0
+wincertstore==0.2

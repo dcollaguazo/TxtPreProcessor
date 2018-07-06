@@ -2,7 +2,6 @@ import pandas as pd
 import langdetect as ld
 import numpy as np
 import nltk
-import re
 
 class Cleaner:
 	def __init__(self, file_path:str):
@@ -126,6 +125,6 @@ class Cleaner:
 	
 
 if __name__ == "__main__":
-	input_path = "/input/blog_content.csv"
-	output_path = "/output/blog_content_cleaned.csv"
+	input_path = "input/blog_content.csv"
+	output_path = "output/blog_content_cleaned.csv"
 	clean = Cleaner(input_path).clean(output_path)
