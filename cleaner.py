@@ -5,6 +5,8 @@ import numpy as np
 import nltk
 import re
 
+my_path = "C:/Users/DANIELACO/blog_abierto_al_publico/blog_abierto_al_publico/"
+
 class Cleaner:
 	def __init__(self, file_path:str):
 		self.df = pd.read_csv(file_path, header=None, names = ["Blog Content"])
@@ -49,17 +51,14 @@ class Cleaner:
 		self.strip_language()
 
 		self.to_lower()
-		
-		#removing some other customized content
-		self.handle_strs(r'\[comma\]',' ')
 
 		self.remove_punctuation()
 
-		#remove other weird remaining strings that you might find 
+		#Quitando contenido basura
 		self.handle_strs('var dd_offset_from_content  40var dd_top_offset_from_content  0var dd_override_start_anchor_id  var dd_override_top_offset', '')
+		self.handle_strs(r'\[comma\]',' ')
 
-		#converting unicode to characters we might miss some but thats ok
-		#here a helpful source:http://www.fileformat.info/info/unicode/char/search.htm
+		#Reemplazando caracteres unicode con ayuda de la siguiente fuente:http://www.fileformat.info/info/unicode/char/search.htm
 		self.handle_strs('u00e1','a')
 		self.handle_strs('u00e0','a')
 		self.handle_strs('u00c1','a')
@@ -114,22 +113,22 @@ class Cleaner:
 		self.handle_strs('u00a0',' ')
 		self.handle_strs('u2013',' ')
 
-		#remove numbers
+		#Quitando números
 		self.remove_numbers()
 
-		#remove stopwords
+		#Quitando palabras comunes
 		self.remove_stopwords()
 
-		#word stemming and lemmatization
+		#Transformando palabras a su raíz
 		self.stem_words()
 
-		#export cleaned dataframe to csv
+		#Exportando el texto limpio a un csv
 		self.df.to_csv(file_path, encoding='utf-8', index=False)
 		
 
 	
 
 if __name__ == "__main__":
-	input_path = "C:/Users/DANIELACO/blog_abierto_al_publico/blog_abierto_al_publico/input/blog_content.csv"
-	output_path = "C:/Users/DANIELACO/blog_abierto_al_publico/blog_abierto_al_publico/output/blog_content_cleaned.csv"
+	input_path = my_path + "input/blog_content.csv"
+	output_path = my_path + "output/blog_content_cleaned.csv"
 	clean = Cleaner(input_path).clean(output_path)
