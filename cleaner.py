@@ -7,6 +7,7 @@ class Cleaner:
 	def __init__(self, file_path:str):
 		self.df = pd.read_csv(file_path, header=None, names = ["Blog Content"])
 
+	#funcion que separa el contenido en español del resto
 	def strip_language(self, foreign_language: str = 'all'):
 		indices_to_be_dropped = []
 		if foreign_language == 'all':
@@ -50,11 +51,11 @@ class Cleaner:
 
 		self.remove_punctuation()
 
-		#Quitando contenido basura
+		#Se quita el contenido basura
 		self.handle_strs('var dd_offset_from_content  40var dd_top_offset_from_content  0var dd_override_start_anchor_id  var dd_override_top_offset', '')
 		self.handle_strs(r'\[comma\]',' ')
 
-		#Reemplazando caracteres unicode con ayuda de la siguiente fuente:http://www.fileformat.info/info/unicode/char/search.htm
+		#Se reemplazan los caracteres unicode con ayuda de la siguiente fuente:http://www.fileformat.info/info/unicode/char/search.htm
 		self.handle_strs('u00e1','a')
 		self.handle_strs('u00e0','a')
 		self.handle_strs('u00c1','a')
@@ -109,16 +110,16 @@ class Cleaner:
 		self.handle_strs('u00a0',' ')
 		self.handle_strs('u2013',' ')
 
-		#Quitando números
+		#Se remueven los números
 		self.remove_numbers()
 
-		#Quitando palabras comunes
+		#Se quitan las palabras comunes
 		self.remove_stopwords()
 
-		#Transformando palabras a su raíz
+		#Se transforman las palabras a su raíz
 		self.stem_words()
 
-		#Exportando el texto limpio a un csv
+		#Se exporta el texto limpio a un csv
 		self.df.to_csv(file_path, encoding='utf-8', index=False)
 		
 
