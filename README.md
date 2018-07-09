@@ -16,7 +16,7 @@ Python 3.6.5
 # Instalación
 Las dependencias de esta clase se encuentran en el  archivo requirements.txt
 
-# Cómo utilizarlo
+# ¿Cómo utilizarlo?
 Luego de clonar la clase, utilizando la línea de comandos navegar a la carpeta raíz *TXTPreProcessor* y ejecutar
 python cleaner.py
 
