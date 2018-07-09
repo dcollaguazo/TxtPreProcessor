@@ -14,10 +14,11 @@ Clase para pre procesar texto español contenido en un csv.  El pre procesamient
 Python 3.6.5
 
 # Instalación
-- Las dependencias de esta clase están en el  archivo requirements.txt
+Las dependencias de esta clase se encuentran en el  archivo requirements.txt
 
 # Cómo utilizarlo
 Luego de clonar la clase, utilizando la línea de comandos navegar a la carpeta raíz *TXTPreProcessor* y ejecutar
 python cleaner.py
 
 # Licencia
+MIT License
