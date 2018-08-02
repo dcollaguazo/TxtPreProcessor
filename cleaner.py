@@ -19,7 +19,7 @@ class Cleaner:
 				except Exception as e:
 					print(e)
 		self.df.drop(list(set(indices_to_be_dropped)), inplace = True)
-		
+
 	def to_lower(self):
 		self.df['Blog Content'] = self.df['Blog Content'].str.lower()	
 
@@ -64,10 +64,14 @@ class Cleaner:
 		self.stem_words()
 
 		#Se exporta el texto limpio a un csv
-		self.df[['Id','Blog URL','Blog Content']].to_csv(file_path, encoding='utf-8', index=False)
+		self.df = self.df.reset_index()
+		self.df.index.names = ['Topic Modeling Id']
+
+		# self.df['Topic Modeling Identifier'] = self.df.index 
+		self.df[['Id','Blog Content','Blog URL']].to_csv(file_path, encoding='utf-8', index=True)
+
 
 if __name__ == "__main__":
 	raw_data = "raw_data/blog_content_raw.csv"
 	cleaned_data = "cleaned_data/blog_content_cleaned.csv"
 	clean = Cleaner(raw_data).clean(cleaned_data)
-
