@@ -68,7 +68,7 @@ class Cleaner:
 		self.df.index.names = ['Topic Modeling Id']
 
 		# self.df['Topic Modeling Identifier'] = self.df.index 
-		self.df[['Id','Blog Content','Blog URL']].to_csv(file_path, encoding='utf-8', index=True)
+		self.df[['Blog Content','Blog URL']].to_csv(file_path, encoding='utf-8', index=True)
 
 
 if __name__ == "__main__":
