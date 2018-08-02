@@ -6,7 +6,7 @@ import nltk
 
 class Cleaner:
 	def __init__(self, file_path:str):
-		self.df = pd.read_csv(file_path, header=0, names=['Author', 'Blog Content', 'Blog URL', 'Publication Date', 'Summary', 'Title'])
+		self.df = pd.read_csv(file_path, header=0, names=['Id','Author', 'Blog Content', 'Blog URL', 'Publication Date', 'Summary', 'Title'])
 
 	#funcion que separa el contenido en español del resto
 	def strip_language(self, foreign_language: str = 'all'):
@@ -64,7 +64,7 @@ class Cleaner:
 		self.stem_words()
 
 		#Se exporta el texto limpio a un csv
-		self.df['Blog Content'].to_csv(file_path, encoding='utf-8', index=False)
+		self.df[['Id','Blog URL','Blog Content']].to_csv(file_path, encoding='utf-8', index=False)
 
 if __name__ == "__main__":
 	raw_data = "raw_data/blog_content_raw.csv"
