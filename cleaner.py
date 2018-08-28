@@ -82,4 +82,5 @@ class Cleaner:
 if __name__ == "__main__":
 	raw_data = "raw_data/blog_content_raw.csv"
 	cleaned_data = "cleaned_data/blog_content_cleaned_es.csv"
+	#clean(file_to_be_processed, index of the column with thhe content, language) takes three parameters
 	clean = Cleaner(raw_data).clean(cleaned_data,2,'es')
